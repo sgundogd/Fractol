@@ -6,7 +6,7 @@
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:09:35 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/21 23:58:02 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 02:01:59 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_vars {
 	int		iter;
 	double	a_0;
 	double	b_0;
+	int		flag;
 }				t_vars;
 
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
@@ -52,8 +53,10 @@ int		mandelbrot(int px, int py, t_vars vars);
 void	init_m(t_vars *vars);
 void	ft_mandelbrot(t_vars *vars);
 int		change(int keycode, t_vars *vars);
-int		ft_close(int keycode, t_vars *vars);
+int		ft_key(int keycode, t_vars *vars);
 void	ft_hook(t_vars *vars);
-int	ft_swap(int keycode, t_vars *vars);
+int		ft_swap(int keycode, t_vars *vars);
+void	ft_color(int px, int py, t_vars *vars);
+void	zoom_out(t_vars *vars);
 
 #endif
