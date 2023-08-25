@@ -6,7 +6,7 @@
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 02:04:50 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/25 02:05:36 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 02:14:57 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	ft_color(int px, int py, t_vars *vars)
 	int		iter;
 	double	clr;
 
-	iter = mandelbrot(px, py, (*vars));
+	if (vars->a_0 == 0)
+		iter = mandelbrot(px, py, (*vars));
+	else
+		iter = julia(px, py, (*vars));
 	clr = 255 * iter / vars->iter;
 	if (iter == vars->iter)
 		my_mlx_pixel_put(vars, px, py, 0x000000);

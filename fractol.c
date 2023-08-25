@@ -6,12 +6,11 @@
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:24:04 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/25 02:05:32 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 02:08:57 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
 
 int	ft_swap(int keycode, t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:06:43 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/25 02:05:49 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 02:10:42 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int	hop(int button, int x, int y, t_vars *vars)
 	x_0 = (vars->x_max - vars->x_min) * x / WINDOW_WIDTH + vars->x_min;
 	y_0 = (vars->y_max - vars->y_min) * y / WINDOW_HEIGHT + vars->y_min;
 	if (button == 4)
+	{
+		vars->iter -= 2;
 		zoom_out(vars);
+	}
 	if (button == 5)
 	{
 		vars->iter += 2;
@@ -88,7 +91,6 @@ void	zoom_out(t_vars *vars)
 	double	new_x;
 	double	new_y;
 
-	vars->iter -= 2;
 	new_x = (vars->x_max - vars->x_min) * 10 / 8
 		- (vars->x_max - vars->x_min);
 	vars->x_max = vars->x_max + new_x / 2;
