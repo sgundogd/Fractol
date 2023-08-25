@@ -6,7 +6,7 @@
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:22:41 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/25 02:13:38 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:51:25 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	ft_julia(t_vars *vars)
 {
-	int		a;
 	int		px;
 	int		py;
-	double	clr;
 
-	a = 0;
 	px = 0;
 	while (px < WINDOW_WIDTH)
 	{
@@ -34,6 +31,7 @@ void	ft_julia(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 	mlx_hook(vars->win, 4, 0, hop_j, vars);
 	mlx_hook(vars->win, 2, 0, change, vars);
+	mlx_hook(vars->win, 17, 0, ft_exit, vars);
 }
 
 void	init_j(t_vars *vars)

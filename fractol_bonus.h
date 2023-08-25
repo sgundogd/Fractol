@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 18:09:35 by sgundogd          #+#    #+#             */
-/*   Updated: 2023/08/25 11:49:28 by sgundogd         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:53:23 by sgundogd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include "./mlx/mlx.h"
 # include <math.h>
-# include <stdio.h>
 
 # define WINDOW_WIDTH 900
 # define WINDOW_HEIGHT 600
@@ -58,6 +58,6 @@ int		ft_swap(int keycode, t_vars *vars);
 void	ft_color(int px, int py, t_vars *vars);
 void	zoom_out(t_vars *vars);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int	ft_exit(t_vars *vars);
+int		ft_exit(t_vars *vars);
 
 #endif

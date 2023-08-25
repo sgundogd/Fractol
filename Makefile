@@ -1,49 +1,41 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sgundogd <sgundogd@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/06 04:45:20 by mugurel           #+#    #+#              #
-#    Updated: 2023/08/25 02:08:14 by sgundogd         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fractol
+NAME_BONUS = fractol_bonus
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
-LIBFT = ./libft/libft.a
 SRCS = ./fractol.c ./julia.c ./mandelbrot.c ./utils.c
-OBJ = $(SRCS:.c =.o)
-LFLAGS = -lXext -lX11 -lm -lz -L./lib/mlx_lib -lmlx
-MLX = ./mlx/libmlx.a
+SRCS_BONUS = ./fractol_bonus.c ./julia_bonus.c ./mandelbrot_bonus.c ./utils_bonus.c
+OBJ = $(SRCS:.c=.o)
+OBJ_BONUS = $(SRCS_BONUS:.c=.o)
 RM = rm -rf
-LIBC = ar -rcs
+MLX = mlx/libmlx.a
 
-
-$(NAME): $(OBJ) ${LIBFT}
-	$(CC) $(OBJ) ${LIBFT} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-all: $(MLX) ${NAME}
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -Imlx -c  $< -o $@
 
-$(MLX) :
-	@make -C ./mlx
-$(LIBFT):
-	make -C ./libft
+$(NAME):$(MLX) $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+bonus: $(MLX) $(OBJ_BONUS)
+	$(CC) $(FLAGS) $(OBJ_BONUS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS)
+
+
+all: $(MLX) $(NAME) bonus
+
+$(MLX):
+	make -C mlx/
 
 clean:
+	make clean -C mlx/
 	${RM} $(OBJ)
+	${RM} $(OBJ_BONUS)
 
-fclean:
-	clean
+fclean: clean
 	${RM} ${NAME}
-	rm libmlx.a
+	${RM} $(MLX)
+	${RM} ${NAME_BONUS}
 
 re:			fclean all
 
-.PHONY: all bonus clean fclean re .c.o
+.PHONY: all bonus clean fclean re
